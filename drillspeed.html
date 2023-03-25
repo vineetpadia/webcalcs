@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drill Press Speed Calculator</title>
+    <script>
+        function calculateRPM() {
+            const diameter = parseFloat(document.getElementById("diameter").value);
+            const material = parseFloat(document.getElementById("material").value);
+            const units = document.getElementById("units").value;
+            let diameterInInches;
+
+            if (units === "mm") {
+                diameterInInches = diameter / 25.4;
+            } else {
+                diameterInInches = diameter;
+            }
+
+            const rpm = 3.8 * (material / diameterInInches);
+            document.getElementById("result").innerHTML = "Drill Press Speed: " + rpm.toFixed(2) + " RPM";
+        }
+    </script>
+</head>
+<body>
+    <h1>Drill Press Speed Calculator</h1>
+    <form>
+        <label for="diameter">Drill Diameter:</label>
+        <input type="number" id="diameter" step="0.01" required>
+        <select id="units">
+            <option value="inches">Inches</option>
+            <option value="mm">Millimeters</option>
+        </select>
+        <br>
+        <label for="material">Surface Feet per Minute (SFM) for Material:
+        <input type="number" id="material" step="0.01" required>
+    <br>
+    <button type="button" onclick="calculateRPM()">Calculate RPM</button>
+</form>
+<div id="result"></div>
+</body>
+</html>
