@@ -62,5 +62,15 @@
         <button type="button" onclick="calculateRPM()">Calculate RPM</button>
     </form>
     <div id="result"></div>
+    <div id="message"></div>
+    <!--Tell the user to add oil if metallic-->
+    <script>
+        const material = document.getElementById("material");
+        material.addEventListener("change", function() {
+            if (material.value === "steel" || material.value === "stainlesssteel" || material.value === "iron" || material.value === "bronze" || material.value === "aluminum") {
+                document.getElementById("message").innerHTML = "Drill Press Speed: Add oil to the drill bit";
+            }
+        });
+        </script>
 </body>
 </html>
