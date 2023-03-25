@@ -24,11 +24,14 @@
 
         function getMaterialSFM(material) {
             const sfmValues = {
-                wood: 3000,
-                pmma: 800,
-                plastics: 1000,
+                wood: 300,
+                acrylic: 800,
+                plastics: 100,
                 aluminum: 250,
-                steel: 100
+                steel: 75
+                stainlesssteel: 35
+                bronze: 250
+                iron: 100
             };
             return sfmValues[material];
         }
@@ -50,10 +53,14 @@
             <option value="pmma">PMMA</option>
             <option value="plastics">Plastics</option>
             <option value="aluminum">Aluminum</option>
+            <option value="stainlesssteel">Stainless Steel</option>
+            <option value="iron">Cast Iron</option>
+            <option value="bronze">Brass/Bronze</option>
             <option value="steel">Steel</option>
         </select>
         <br>
         <button type="button" onclick="calculateRPM()">Calculate RPM</button>
     </form>
     <div id="result"></div>
-    
+</body>
+</html>
