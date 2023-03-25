@@ -7,7 +7,7 @@
     <script>
         function calculateRPM() {
             const diameter = parseFloat(document.getElementById("diameter").value);
-            const material = parseFloat(document.getElementById("material").value);
+            const material = document.getElementById("material").value;
             const units = document.getElementById("units").value;
             let diameterInInches;
 
@@ -17,8 +17,20 @@
                 diameterInInches = diameter;
             }
 
-            const rpm = 3.8 * (material / diameterInInches);
+            const sfm = getMaterialSFM(material);
+            const rpm = 3.8 * (sfm / diameterInInches);
             document.getElementById("result").innerHTML = "Drill Press Speed: " + rpm.toFixed(2) + " RPM";
+        }
+
+        function getMaterialSFM(material) {
+            const sfmValues = {
+                wood: 3000,
+                pmma: 800,
+                plastics: 1000,
+                aluminum: 250,
+                steel: 100
+            };
+            return sfmValues[material];
         }
     </script>
 </head>
@@ -32,11 +44,16 @@
             <option value="mm">Millimeters</option>
         </select>
         <br>
-        <label for="material">Surface Feet per Minute (SFM) for Material:
-        <input type="number" id="material" step="0.01" required>
-    <br>
-    <button type="button" onclick="calculateRPM()">Calculate RPM</button>
-</form>
-<div id="result"></div>
-</body>
-</html>
+        <label for="material">Material:</label>
+        <select id="material">
+            <option value="wood">Wood</option>
+            <option value="pmma">PMMA</option>
+            <option value="plastics">Plastics</option>
+            <option value="aluminum">Aluminum</option>
+            <option value="steel">Steel</option>
+        </select>
+        <br>
+        <button type="button" onclick="calculateRPM()">Calculate RPM</button>
+    </form>
+    <div id="result"></div>
+    
