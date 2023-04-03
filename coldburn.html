@@ -24,7 +24,6 @@
             const time_to_hypothermia = estimate_time_to_hypothermia(water_temp_c);
 
             document.getElementById("calories_result").innerHTML = "Estimated calories burned per hour: " + calories_per_hour.toFixed(2) + " kcal/h";
-            document.getElementById("hypothermia_result").innerHTML = "Estimated time to the onset of hypothermia: " + time_to_hypothermia.toFixed(1) + " hours";
         }
 
         function calories_burned(height_m, weight_kg, water_temp_c) {
@@ -76,6 +75,9 @@
     </form>
     <div id="calories_result"></div>
     <div id="hypothermia_result"></div>
+    <!--Display the equations for this calculation-->
+    <p>Calories Burned: Heat Loss per Hour = Body Surface Area * (Body Temperature - Water Temperature) * Convection Coefficient</p>
+
 </body>
 </html>
 
