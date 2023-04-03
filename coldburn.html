@@ -23,7 +23,6 @@
             const calories_per_hour = calories_burned(height, weight, water_temp_c);
             const time_to_hypothermia = estimate_time_to_hypothermia(water_temp_c);
 
-            document.getElementById("calories_result").innerHTML = "Estimated calories burned per hour: " + calories_per_hour.toFixed(2) + " kcal/h";
         }
 
         function calories_burned(height_m, weight_kg, water_temp_c) {
