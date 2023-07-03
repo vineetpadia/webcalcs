@@ -6,24 +6,32 @@
     <title>Drill Press Speed Calculator</title>
     <script>
         function calculateRPM() {
-            const diameter = parseFloat(document.getElementById("diameter").value);
-            const material = document.getElementById("material").value;
-            const units = document.getElementById("units").value;
-            let diameterInInches;
+    const diameter = parseFloat(document.getElementById("diameter").value);
+    const material = document.getElementById("material").value;
+    const units = document.getElementById("units").value;
+    let diameterInInches;
 
-            if (units === "mm") {
-                diameterInInches = diameter / 25.4;
-            } else {
-                diameterInInches = diameter;
-            }
+    if (units === "mm") {
+        diameterInInches = diameter / 25.4;
+    } else {
+        diameterInInches = diameter;
+    }
 
-            const sfm = getMaterialSFM(material);
-            const rpm = 3.8 * (sfm / diameterInInches);
-            if (rpm > 5000) {
-                document.getElementById("message").innerHTML = "Message: Set drill press to highest speed";
-            }
-            document.getElementById("result").innerHTML = "Drill Press Speed: " + rpm.toFixed(2) + " RPM";
-        }
+    const sfm = getMaterialSFM(material);
+    const rpm = 3.8 * (sfm / diameterInInches);
+    document.getElementById("result").innerHTML = "Drill Press Speed: " + rpm.toFixed(2) + " RPM";
+
+    const metallicMaterials = ["steel", "stainlesssteel", "iron", "bronze", "aluminum"];
+    let message2Content = '';
+    if (rpm > 5000) {
+        message2Content += "Message: Set drill press to highest speed.";
+    }
+    if (metallicMaterials.includes(material)) {
+        message2Content += "Message: Add oil to the drill bit.";
+    }
+    document.getElementById("message2").innerHTML = message2Content;
+}
+
 
         function getMaterialSFM(material) {
             const sfmValues = {
